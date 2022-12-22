@@ -7,7 +7,7 @@ class prints_handler:
         self.ignore_errors = ignore_errors
         self.end = None
     
-    def flatten_string(self, args):
+    def _flatten_string(self, args):
         text = ''
         for i in range(len(args)):
             text += str(args[i]) + (' ' if i != len(args) - 1 else '')
@@ -19,7 +19,7 @@ class prints_handler:
         return value
 
     def print(self, *args, **kwargs):
-        text = self.flatten_string(args)
+        text = self._flatten_string(args)
 
         self.printing_array += text + (kwargs['end'] if 'end' in kwargs else '\n')
         if 'end' not in kwargs: print(text)
